@@ -1,15 +1,33 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The functions will create and cache the inverse of a matrix
+## The functions will use the scoping rules of R
 
-## Write a short comment describing this function
+## makCacheMatrix will create a matrix and cache the inverse of the matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-
+    m <- NULL
+    set <- function(y) {
+    x <<- y
+    m <<- NULL
+  }
+    get <- function() x
+    setinverse <- function(solve) m <<- inverse
+    getinverse <- function() m
+    list(set = set, get = get,
+    setinverse = setinverse,
+    getinverse = getinverse)
 }
 
 
-## Write a short comment describing this function
+## The function cacheSolve will return the inverse of the function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  m <- x$getinverse()
+  if(!is.null(m)) {
+    message("getting cached data")
+    return(m)
+  }
+  data <- x$get()
+  m <- solve(data, ...)
+  x$setinverse(m)
+  m
 }
