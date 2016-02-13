@@ -1,8 +1,8 @@
-## The two makeCacheMatrix and cacheSolve will be used to create
+## The two functions makeCacheMatrix and cacheSolve will be used to create
 ## and cache the inverse of a matrix. The functions will use the 
-## scoping rules of R and the 
+## scoping rules of R. 
 
-## makCacheMatrix will create a special object "matrix" that can
+## makeCacheMatrix will create a special object "matrix" that can
 ## cache the inverse of the matrix. The function will get and set the matrix.
 ## It will also get and set the inverse of the matrix. 
 
@@ -13,7 +13,7 @@ makeCacheMatrix <- function(x = matrix()) {
     m <<- NULL
   }
     get <- function() x
-    setinverse <- function(inverse) m <<- inverse
+    setinverse <- function(solve) m <<- solve
     getinverse <- function() m
     list(set = set, get = get,
     setinverse = setinverse,
